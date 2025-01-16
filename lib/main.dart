@@ -3,6 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:my_portfolio/core/screens/home_screen.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   // await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
@@ -15,9 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
+      theme: ThemeData.dark(),
       home: HomeScreen(),
     );
   }

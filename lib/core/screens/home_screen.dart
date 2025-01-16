@@ -4,8 +4,12 @@ import 'package:my_portfolio/core/constants/common_const.dart';
 import 'package:my_portfolio/core/constants/page_size_const.dart';
 
 import 'package:my_portfolio/core/widgets/desktop_header.dart';
+import 'package:my_portfolio/core/widgets/desktop_mobile.dart';
+
 import 'package:my_portfolio/core/widgets/mobile_drawer.dart';
 import 'package:my_portfolio/core/widgets/mobile_header.dart';
+import 'package:my_portfolio/core/widgets/project_session.dart';
+import 'package:my_portfolio/core/widgets/skills_mobile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -54,6 +58,38 @@ class _HomeScreenState extends State<HomeScreen> {
                       scaffoldKey.currentState?.openEndDrawer();
                     },
                   ),
+                Container(
+                  key: navbarKeys[1],
+                  width: screenWidth,
+                  padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
+                  color: AppColors.darkBackground,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      // title
+                      const Text(
+                        "What I can do",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.darkText,
+                        ),
+                      ),
+                      const SizedBox(height: 50),
+
+                      // platforms and skills
+                      if (constraints.maxWidth >=
+                          PageSizeConst.mobileBreakpoint)
+                        const DesktopSkills()
+                      else
+                        const MobileSkills(),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 30),
+                ProjectSession(
+                  key: navbarKeys[3],
+                )
               ],
             ),
           ),
