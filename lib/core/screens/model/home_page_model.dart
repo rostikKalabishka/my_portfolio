@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/service/email_service.dart';
 
 class HomePageModel extends ChangeNotifier {
-  final emailService = EmailService();
+//   final emailService = EmailService();
 
   Future<void> sendMessageOnEmail(
       {required String message,
