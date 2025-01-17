@@ -89,8 +89,8 @@ class _FormWidgetState extends State<FormWidget> {
               child: SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () {
-                      _sendMessage(model);
+                    onPressed: () async {
+                      await _sendMessage(model);
                     },
                     child: Padding(
                       padding: EdgeInsets.all(8),
@@ -173,7 +173,7 @@ class _FormWidgetState extends State<FormWidget> {
     );
   }
 
-  void _sendMessage(HomePageModel model) {
+  Future<void> _sendMessage(HomePageModel model) async {
     final message = messageController.text.trim();
     final email = emailController.text.trim();
     final name = nameController.text.trim();
@@ -187,7 +187,8 @@ class _FormWidgetState extends State<FormWidget> {
       } else {
         _error = '';
       }
-      // model.sendMessageOnEmail(message: message, email: email, name: name);
+      await model.sendMessageOnEmail(
+          message: message, email: email, name: name);
 
       messageController.clear();
       emailController.clear();

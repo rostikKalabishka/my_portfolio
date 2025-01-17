@@ -75,7 +75,7 @@ abstract class CommonConst {
     MyContact(
       image: 'assets/telegram.png',
       name: 'telegram',
-      url: 'https://t.me/.@RostikKalabishka',
+      url: 'https://t.me/@RostikKalabishka',
     ),
     MyContact(
       image: 'assets/linkedin.png',

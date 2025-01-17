@@ -1,38 +1,41 @@
-import 'dart:developer';
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:mailer/mailer.dart';
-import 'package:mailer/smtp_server.dart';
-import 'package:mailer/smtp_server/gmail.dart';
 
 class EmailService {
   String username = '${dotenv.env['MY_EMAIL']}';
   String password = '${dotenv.env['MY_PASSWORD']}';
-  // String username = 'rostyslav.kalabishka.code@gmail.com';
-  // String password = 'zauz mpxr hfug bfzj';
-  late final smtpServer;
-
-  EmailService() {
-    smtpServer = gmail(username, password);
-  }
 
   Future<void> sendMessageInEmail(
       {required String message,
       required String email,
       required String name}) async {
     try {
-      final emailMessage = Message()
-        ..from = Address(username, username)
-        ..recipients.add(username)
-        ..subject = 'Message from $email'
-        ..text = '''$email ($name)
-      Message: $message 
-       ''';
+      final apiKey = '${dotenv.env['API_KEY']}';
+      final url = 'https://api.mailjet.com/v3.1/send';
 
-      final sendReport = await send(emailMessage, smtpServer);
-      print('Message sent: ${sendReport.toString()}');
+      final headers = {
+        'Authorization': 'Basic ${base64Encode(utf8.encode('api:$apiKey'))}',
+        'Content-Type': 'application/json',
+      };
+
+      final body = json.encode({
+        'Messages': [
+          {
+            'From': {'Email': email},
+            'To': [
+              {'Email': username}
+            ],
+            'Subject': 'Question from $email ($username)',
+            'TextPart': message,
+          }
+        ]
+      });
+
+      await http.post(Uri.parse(url), headers: headers, body: body);
     } catch (e) {
-      log(e.toString());
       rethrow;
     }
   }

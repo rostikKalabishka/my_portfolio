@@ -4,7 +4,7 @@ import 'package:my_portfolio/core/constants/common_const.dart';
 import 'package:my_portfolio/core/constants/page_size_const.dart';
 import 'package:my_portfolio/core/screens/model/home_page_model.dart';
 import 'package:my_portfolio/core/widgets/desktop_header.dart';
-import 'package:my_portfolio/core/widgets/desktop_mobile.dart';
+import 'package:my_portfolio/core/widgets/desktop_skills.dart';
 import 'package:my_portfolio/core/widgets/form_widget.dart';
 import 'package:my_portfolio/core/widgets/mobile_drawer.dart';
 import 'package:my_portfolio/core/widgets/mobile_header.dart';
