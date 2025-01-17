@@ -36,7 +36,7 @@ class DrawerMobile extends StatelessWidget {
                 horizontal: 30.0,
               ),
               titleTextStyle: const TextStyle(
-                color: AppColors.darkAccent,
+                color: AppColors.darkText,
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
               ),

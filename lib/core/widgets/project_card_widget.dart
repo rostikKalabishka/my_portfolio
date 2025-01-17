@@ -21,7 +21,7 @@ class ProjectCardWidget extends StatelessWidget {
       },
       child: Container(
         clipBehavior: Clip.antiAlias,
-        height: 320,
+        height: 280,
         width: 260,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -50,14 +50,16 @@ class ProjectCardWidget extends StatelessWidget {
               ),
             ),
             // subtitle
-            Padding(
-              padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
-              child: Text(
-                project.subtitle,
-                overflow: TextOverflow.fade,
-                style: const TextStyle(
-                  fontSize: 12,
-                  color: AppColors.darkText,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+                child: Text(
+                  project.subtitle,
+                  overflow: TextOverflow.fade,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    color: AppColors.darkText,
+                  ),
                 ),
               ),
             ),

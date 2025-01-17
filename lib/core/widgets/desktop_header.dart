@@ -26,8 +26,8 @@ class DesktopHeader extends StatelessWidget {
         gradient: const LinearGradient(
           colors: [
             Colors.transparent,
-            AppColors.darkPrimary,
-            AppColors.darkAccent,
+            Color.fromARGB(255, 26, 25, 25),
+            AppColors.darkCard,
           ],
         ),
         boxShadow: [
