@@ -5,7 +5,7 @@ import 'package:my_portfolio/core/screens/home_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
+  //await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
