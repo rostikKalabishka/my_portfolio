@@ -8,8 +8,8 @@ class HomePageModel extends ChangeNotifier {
       {required String message,
       required String email,
       required String name}) async {
-    await emailService.sendMessageInEmail(
-        email: email, message: message, name: name);
+    // await emailService.sendMessageInEmail(
+    //     email: email, message: message, name: name);
     notifyListeners();
   }
 }

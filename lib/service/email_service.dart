@@ -8,35 +8,28 @@ class EmailService {
   String username = '${dotenv.env['MY_EMAIL']}';
   String password = '${dotenv.env['MY_PASSWORD']}';
 
-  Future<void> sendMessageInEmail(
-      {required String message,
-      required String email,
-      required String name}) async {
-    try {
-      final apiKey = '${dotenv.env['API_KEY']}';
-      final url = 'https://api.mailjet.com/v3.1/send';
+  Future<void> sendMessageInEmail({
+    required String email,
+    required String name,
+    required String message,
+  }) async {
+    final url = 'https://your-firebase-function-url/sendEmail';
+    final headers = {
+      'Content-Type': 'application/json',
+    };
 
-      final headers = {
-        'Authorization': 'Basic ${base64Encode(utf8.encode('api:$apiKey'))}',
-        'Content-Type': 'application/json',
-      };
+    final body = json.encode({
+      'subject': 'Question from $email ($name)',
+      'body': message,
+    });
 
-      final body = json.encode({
-        'Messages': [
-          {
-            'From': {'Email': email},
-            'To': [
-              {'Email': username}
-            ],
-            'Subject': 'Question from $email ($username)',
-            'TextPart': message,
-          }
-        ]
-      });
+    final response =
+        await http.post(Uri.parse(url), headers: headers, body: body);
 
-      await http.post(Uri.parse(url), headers: headers, body: body);
-    } catch (e) {
-      rethrow;
+    if (response.statusCode == 200) {
+      print('Email sent successfully!');
+    } else {
+      print('Failed to send email: ${response.statusCode}');
     }
   }
 }
