@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "647168492493",
+    "project_id": "send-email-f2206",
+    "storage_bucket": "send-email-f2206.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647168492493:android:079b061f1855c566fcfa84",
+        "android_client_info": {
+          "package_name": "com.example.my_portfolio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs383bb6k6nLTAuZ0fsJI2umq0GcYOeZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
